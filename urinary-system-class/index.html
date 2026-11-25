@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#173d3a">
+  <meta name="description" content="泌尿系统独立课程站：章节目录、分类题库、课件讲义与本机阅读记录。">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="泌尿系统">
+  <title>泌尿系统 · 温医大整合课程</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./styles.css?v=20261125-family1">
+  <script src="./site-links.js?v=20261125-family1" defer></script>
+  <script src="./data.js?v=20261125-family1" defer></script>
+  <script src="./learning.js?v=20261125-family1" defer></script>
+  <script src="./app.js?v=20261125-family1" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="site-header"><div class="header-inner">
+    <a class="brand" href="#home"><img src="./icons/icon-192.png" width="38" height="38" alt=""><span><strong id="site-name">泌尿系统</strong><small>温医大整合课程</small></span></a>
+    <nav class="header-links" aria-label="网站导航"><a data-site="portal">课程总网站</a><a data-site="atlas" id="atlas-header-link">医学图谱</a><a data-account>学习账号</a></nav>
+    <button id="mobile-menu" class="button quiet menu-button" type="button" aria-expanded="false" aria-controls="side-nav">课程导航</button>
+  </div></header>
+  <div id="offline-banner" class="offline-banner" role="status" hidden>当前离线，可查看已缓存的目录；原站阅片和未缓存资料需要联网。</div>
+  <div class="app-layout"><aside class="sidebar" id="side-nav" aria-label="本课程导航"><nav id="main-nav"></nav><div id="chapter-nav"></div><div class="sidebar-footer"><button type="button" class="text-button" data-install>添加到桌面</button><span>课程内容持续整理</span></div></aside><main id="main" class="main" tabindex="-1"><p class="loading">正在打开课程目录…</p></main></div>
+  <footer class="site-footer"><span>温医大整合课程</span><span id="footer-note">资料按课程持续整理</span></footer>
+  <nav id="mobile-nav" class="mobile-nav" aria-label="手机导航"></nav>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <dialog id="info-dialog" aria-labelledby="dialog-title"><button type="button" class="dialog-close" data-close-dialog aria-label="关闭">×</button><h2 id="dialog-title"></h2><div id="dialog-body"></div></dialog>
+  <input type="file" id="pdf-input" accept="application/pdf,.pdf" hidden>
+  <input type="file" id="image-input" accept="image/*" multiple hidden>
+  <noscript><p class="no-script">请启用JavaScript以浏览课程目录。已建立的课程可打开<a href="https://syrius-qihao.github.io/disease-biology-class/">疾病的生物学基础</a>。</p></noscript>
+</body>
+</html>

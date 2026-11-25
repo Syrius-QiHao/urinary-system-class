@@ -1,0 +1,11 @@
+'use strict';
+const NAME='wmu-site-urinary-system-a7da9e178c9aff28';
+const PREFIX='wmu-site-urinary-system-';
+const BASE=new URL(self.registration.scope);
+const FILES=['./','index.html','styles.css?v=20261125-family1','site-links.js?v=20261125-family1','data.js?v=20261125-family1','learning.js?v=20261125-family1','app.js?v=20261125-family1','favicon.svg','manifest.webmanifest','icons/icon-192.png','icons/icon-512.png','icons/maskable-512.png','icons/apple-touch-icon.png'].map(p=>new URL(p,BASE).href);
+const INDEX=new URL('index.html',BASE).href;
+const STATIC=new Set(FILES);
+const FRESH=new Set(['data.js','site-links.js'].map(p=>new URL(p,BASE).pathname));
+self.addEventListener('install',e=>e.waitUntil(caches.open(NAME).then(c=>c.addAll(FILES))));
+self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith(PREFIX)&&k!==NAME).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
+self.addEventListener('fetch',e=>{const r=e.request,u=new URL(r.url);if(r.method!=='GET'||u.origin!==BASE.origin||r.headers.has('authorization'))return;const navigation=r.mode==='navigate'&&(u.pathname===BASE.pathname||u.pathname===new URL('index.html',BASE).pathname);if(navigation&&!u.search){e.respondWith((async()=>{const c=await caches.open(NAME);try{const response=await fetch(r);if(response.ok)await c.put(INDEX,response.clone());return response;}catch{return await c.match(INDEX)||new Response('当前离线，请联网后重新打开。',{status:503,headers:{'Content-Type':'text/plain;charset=utf-8'}});}})());return;}if(STATIC.has(u.href))e.respondWith(caches.open(NAME).then(async c=>{const old=await c.match(r);if(FRESH.has(u.pathname)){try{const response=await fetch(r);if(response.ok){await c.put(r,response.clone());return response;}return old||response;}catch{return old||new Response('当前离线，目录尚未缓存。',{status:503});}}if(old)return old;const response=await fetch(r);if(response.ok&&response.type!=='opaque')await c.put(r,response.clone());return response;}));});
